@@ -18,7 +18,7 @@ export function SectionFrameAnimation() {
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image();
       const frameNum = String(i + 1).padStart(6, "0");
-      img.src = `/frames_hq/frame_${frameNum}.jpg`;
+      img.src = `${import.meta.env.BASE_URL}frames_hq/frame_${frameNum}.jpg`;
 
       img.onload = () => {
         if (!isMounted) return;

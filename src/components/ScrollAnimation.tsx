@@ -22,7 +22,7 @@ export function ScrollAnimation() {
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image();
       const frameNum = String(i).padStart(6, "0");
-      img.src = `/hero-sequence-webp/frame_${frameNum}.webp`;
+      img.src = `${import.meta.env.BASE_URL}hero-sequence-webp/frame_${frameNum}.webp`;
 
       img.onload = () => {
         if (!isMounted) return;

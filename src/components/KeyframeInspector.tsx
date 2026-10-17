@@ -26,7 +26,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "Macro DNA Ink Sketch on Parchment",
     description: "Extreme macro focus on vintage parchment texture. Ink-drawn DNA double helices, molecular structures, anatomical sketches, and golden fountain pen tip touching paper.",
     significance: "Establishes scientific research origin, editorial warm aesthetic, and foundational paper texture.",
-    imageSrc: "/keyframes/keyframe_01_frame_000000.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_01_frame_000000.png`,
     metrics: { cameraZoom: "2.5x Close-Up", activeLayers: 4, motionVelocity: "0.0 px/s" },
   },
   {
@@ -37,7 +37,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "Pen Lift & Camera Pullback Trigger",
     description: "Golden pen nib lifts 15px vertically and tilts upward. Camera initiates continuous backward dolly vector and slight upward tilt.",
     significance: "Marks transition from static 2D drawing state to active 3D spatial camera trajectory.",
-    imageSrc: "/keyframes/keyframe_02_frame_000035.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_02_frame_000035.png`,
     metrics: { cameraZoom: "2.1x Dolly", activeLayers: 5, motionVelocity: "14.2 px/s" },
   },
   {
@@ -48,7 +48,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "3D Leather Manuscript Books Reveal",
     description: "Camera pulls back to reveal stacked leather-bound manuscript books. Flat 2D ink root lines morph smoothly into dimensional wooden roots wrapping around book spines.",
     significance: "Key dimensional layer transition where 2D flat paper artwork evolves into a 3D multi-layered scene object hierarchy.",
-    imageSrc: "/keyframes/keyframe_03_frame_000072.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_03_frame_000072.png`,
     metrics: { cameraZoom: "1.6x Mid-Shot", activeLayers: 7, motionVelocity: "28.5 px/s" },
   },
   {
@@ -59,7 +59,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "Kinetic Open-Book Page Flipping",
     description: "The top red/burgundy leather book opens its pages dramatically, with individual pages fanning and flipping upwards in mid-air.",
     significance: "Introduces primary kinetic page-turn animation, revealing glowing molecular nodes and constellation graph lines.",
-    imageSrc: "/keyframes/keyframe_04_frame_000115.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_04_frame_000115.png`,
     metrics: { cameraZoom: "1.3x Dynamic", activeLayers: 8, motionVelocity: "42.0 px/s" },
   },
   {
@@ -70,7 +70,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "3D Organic Tree Trunk Eruption",
     description: "A 3D organic wood tree trunk erupts from the center gutter of the open manuscript book. Wood bark texture reveals deep hollows with embedded DNA geometry.",
     significance: "Birth of hero element (Tree of Knowledge/Intelligence rising out of foundational literature).",
-    imageSrc: "/keyframes/keyframe_05_frame_000155.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_05_frame_000155.png`,
     metrics: { cameraZoom: "1.1x Wide", activeLayers: 9, motionVelocity: "36.8 px/s" },
   },
   {
@@ -81,7 +81,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "Foliage Leaf Sprouting & Budding",
     description: "Tree branches extend radially toward screen bounds. Foliage leaves sprout outward while purple flower buds form on branch tips.",
     significance: "Shifts growth phase from structural trunk extension to organic canopy expansion and floral budding.",
-    imageSrc: "/keyframes/keyframe_06_frame_000195.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_06_frame_000195.png`,
     metrics: { cameraZoom: "1.0x Full Canvas", activeLayers: 10, motionVelocity: "18.4 px/s" },
   },
   {
@@ -92,7 +92,7 @@ const KEYFRAMES: KeyframeData[] = [
     title: "Full Purple Floral Bloom Climax",
     description: "Lush purple and magenta flowers bloom fully across the canopy with golden stamens. Constellation network lines glow warmly in the background canvas.",
     significance: "Narrative resolution keyframe representing complete, flourishing evidence-based intelligence (Vera AI).",
-    imageSrc: "/keyframes/keyframe_07_frame_000239.png",
+    imageSrc: `${import.meta.env.BASE_URL}keyframes/keyframe_07_frame_000239.png`,
     metrics: { cameraZoom: "1.0x Full Canvas", activeLayers: 10, motionVelocity: "0.0 px/s" },
   },
 ];

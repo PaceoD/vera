@@ -23,7 +23,7 @@ export function ScrollAnimationPlayer() {
       const frameNum = String(i).padStart(6, "0");
 
       // Use WebP for fast, lightweight preloading, with PNG fallback
-      img.src = `/hero-sequence-webp/frame_${frameNum}.webp`;
+      img.src = `${import.meta.env.BASE_URL}hero-sequence-webp/frame_${frameNum}.webp`;
 
       img.onload = () => {
         if (!isMounted) return;
@@ -36,7 +36,7 @@ export function ScrollAnimationPlayer() {
 
       img.onerror = () => {
         // Fallback to PNG if WebP fails
-        img.src = `/hero-sequence-png/frame_${frameNum}.png`;
+        img.src = `${import.meta.env.BASE_URL}hero-sequence-png/frame_${frameNum}.png`;
         img.onload = () => {
           if (!isMounted) return;
           count++;

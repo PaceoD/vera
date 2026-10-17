@@ -197,7 +197,7 @@ export function VectorLayerPlayground() {
                 <div
                   className="absolute inset-0 bg-cover bg-center pointer-events-none transition-transform duration-300"
                   style={{
-                    backgroundImage: "url('/hero-bg.png')",
+                    backgroundImage: `url('${import.meta.env.BASE_URL}hero-bg.png')`,
                     transform: `scale(${1 + scrubProgress * 0.05})`,
                   }}
                 />

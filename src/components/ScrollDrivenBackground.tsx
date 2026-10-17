@@ -22,7 +22,7 @@ export function ScrollDrivenBackground() {
       const img = new Image();
       const frameNum = String(i).padStart(6, "0");
 
-      img.src = `/hero-sequence-webp/frame_${frameNum}.webp`;
+      img.src = `${import.meta.env.BASE_URL}hero-sequence-webp/frame_${frameNum}.webp`;
 
       img.onload = () => {
         if (!isMounted) return;
@@ -33,7 +33,7 @@ export function ScrollDrivenBackground() {
       };
 
       img.onerror = () => {
-        img.src = `/hero-sequence-png/frame_${frameNum}.png`;
+        img.src = `${import.meta.env.BASE_URL}hero-sequence-png/frame_${frameNum}.png`;
         img.onload = () => {
           if (!isMounted) return;
           count++;

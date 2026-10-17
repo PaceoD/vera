@@ -14,7 +14,7 @@ export function Hero() {
       <div 
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
-          backgroundImage: "url('/hero-bg.png')",
+          backgroundImage: `url('${import.meta.env.BASE_URL}hero-bg.png')`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
