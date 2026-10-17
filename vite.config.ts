@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/YOUR-REPOSITORY-NAME/',
+    base: '/vera/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
