@@ -28,6 +28,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { EvidenceDNA } from "@/components/ui/EvidenceDNA";
 import { useNavigation } from "@/context/NavigationContext";
+import { useAuth } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "motion/react";
 
 // User Profile State
@@ -192,7 +193,8 @@ interface ProfilePageProps {
 }
 
 export function ProfilePage({ defaultTab = "overview" }: ProfilePageProps) {
-  const { navigate } = useNavigation();
+  const { navigate, navigateTo } = useNavigation();
+  const { user, signOut } = useAuth();
   const [activeTab, setActiveTab] = useState<"overview" | "bookmarks" | "history" | "achievements" | "settings">(() => {
     const path = window.location.pathname.toLowerCase();
     if (path.includes("mybookmarks") || path.startsWith("/bookmarks") || window.location.hash === "#bookmarks") {
@@ -203,6 +205,23 @@ export function ProfilePage({ defaultTab = "overview" }: ProfilePageProps) {
   const [activeBookmarkTab, setActiveBookmarkTab] = useState<"articles" | "myths" | "collections">("articles");
   const [notificationEmail, setNotificationEmail] = useState(true);
   const [darkTheme, setDarkTheme] = useState(false);
+
+  const displayUser = user || {
+    name: "Dr. Sarah Jenkins",
+    role: "Health & Science Researcher",
+    email: "sarah.jenkins@verahealth.org",
+    createdAt: "Jan 2026",
+  };
+
+  const getInitials = (name?: string, email?: string) => {
+    if (name) {
+      const parts = name.trim().split(" ");
+      if (parts.length >= 2) return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+      return name.slice(0, 2).toUpperCase();
+    }
+    if (email) return email.slice(0, 2).toUpperCase();
+    return "SJ";
+  };
 
   const handleTabChange = (tabId: "overview" | "bookmarks" | "history" | "achievements" | "settings") => {
     setActiveTab(tabId);
@@ -231,21 +250,21 @@ export function ProfilePage({ defaultTab = "overview" }: ProfilePageProps) {
         {/* 1. Profile Header */}
         <header className="p-8 md:p-10 rounded-[36px] bg-[#F7F1EB] border border-[#E5DCD3] shadow-[0_8px_32px_rgba(44,38,35,0.04)] relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-center gap-6">
-            <div className="w-20 h-20 rounded-full bg-[#2C2623] text-white flex items-center justify-center font-serif text-[32px] font-semibold shadow-md border-2 border-[#D6B46D]/60 shrink-0">
-              SJ
+            <div className="w-20 h-20 rounded-full bg-[#2C2623] text-white flex items-center justify-center font-serif text-[32px] font-semibold shadow-md border-2 border-[#D6B46D]/60 shrink-0 uppercase">
+              {getInitials(displayUser.name, displayUser.email)}
             </div>
 
             <div className="space-y-1">
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="font-serif text-[32px] md:text-[38px] font-semibold text-t-primary leading-none">
-                  {userProfile.name}
+                  {displayUser.name}
                 </h1>
                 <span className="text-[11px] font-mono uppercase tracking-wider text-rose bg-rose/10 px-2.5 py-0.5 rounded-full font-semibold">
-                  Verified Scholar
+                  {displayUser.role || "Verified Scholar"}
                 </span>
               </div>
               <p className="text-[15px] text-t-secondary">
-                {userProfile.role} &middot; <span className="text-t-muted font-mono">{userProfile.memberSince}</span>
+                {displayUser.email} &middot; <span className="text-t-muted font-mono">{displayUser.createdAt ? `Member since ${displayUser.createdAt.slice(0, 7)}` : "Member since 2026"}</span>
               </p>
               <p className="text-[14px] text-t-muted italic pt-0.5">
                 "Welcome back to your evidence-based health knowledge library."
@@ -262,14 +281,27 @@ export function ProfilePage({ defaultTab = "overview" }: ProfilePageProps) {
               <Settings className="w-4 h-4" />
               Settings
             </Button>
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="text-rose hover:bg-rose/10"
-            >
-              <LogOut className="w-4 h-4 mr-1.5" />
-              Sign Out
-            </Button>
+            {user ? (
+              <Button
+                variant="ghost"
+                onClick={async () => {
+                  await signOut();
+                  navigateTo("auth");
+                }}
+                className="text-rose hover:bg-rose/10 cursor-pointer"
+              >
+                <LogOut className="w-4 h-4 mr-1.5" />
+                Sign Out
+              </Button>
+            ) : (
+              <Button
+                variant="secondary"
+                onClick={() => navigateTo("auth")}
+                className="bg-[#2C2623] text-white hover:bg-[#1A1615]"
+              >
+                Sign In / Register
+              </Button>
+            )}
           </div>
         </header>
 

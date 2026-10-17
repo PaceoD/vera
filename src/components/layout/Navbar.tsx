@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
-import { Search } from "lucide-react";
+import { Search, LogIn } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
-export type PageType = "home" | "explore" | "discover" | "bookmarks" | "profile" | "trust" | "search" | "article" | "topic" | "myth";
+export type PageType = "home" | "explore" | "discover" | "bookmarks" | "profile" | "trust" | "search" | "article" | "topic" | "myth" | "auth";
 
 interface NavbarProps {
   currentPage?: PageType;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 export function Navbar({ currentPage = "home", onNavigate }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -122,22 +124,39 @@ export function Navbar({ currentPage = "home", onNavigate }: NavbarProps) {
             </Button>
           )}
 
-          {/* Profile / Account Dashboard Button */}
-          <button
-            onClick={(e) => handleNavClick("profile", e)}
-            className={cn(
-              "p-2 rounded-full border transition-all flex items-center gap-2 cursor-pointer",
-              currentPage === "profile" || currentPage === "bookmarks"
-                ? "bg-[#2C2623] text-white border-[#2C2623]"
-                : "bg-[#F8F3EE] border-[#E5DCD3] hover:border-[#D6B46D] text-t-primary"
-            )}
-            title="Personal Learning Dashboard"
-          >
-            <div className="w-6 h-6 rounded-full bg-[#D6B46D]/20 text-[#8C6D2B] flex items-center justify-center font-bold text-xs">
-              SJ
-            </div>
-            <span className="hidden lg:inline text-xs font-semibold pr-1">Profile</span>
-          </button>
+          {/* User Authentication / Profile Dashboard Button */}
+          {user ? (
+            <button
+              onClick={(e) => handleNavClick("profile", e)}
+              className={cn(
+                "p-1.5 pr-3 rounded-full border transition-all flex items-center gap-2 cursor-pointer",
+                currentPage === "profile" || currentPage === "bookmarks"
+                  ? "bg-[#2C2623] text-white border-[#2C2623]"
+                  : "bg-[#F8F3EE] border-[#E5DCD3] hover:border-[#D6B46D] text-t-primary"
+              )}
+              title="Account Dashboard"
+            >
+              <div className="w-6 h-6 rounded-full bg-[#D6B46D]/20 text-[#8C6D2B] flex items-center justify-center font-bold text-xs uppercase">
+                {user.name ? user.name.slice(0, 2) : user.email?.slice(0, 2) || "US"}
+              </div>
+              <span className="hidden lg:inline text-xs font-semibold pr-1">
+                {user.name?.split(" ")[0] || "Profile"}
+              </span>
+            </button>
+          ) : (
+            <button
+              onClick={(e) => handleNavClick("auth", e)}
+              className={cn(
+                "px-4 py-1.5 rounded-full border text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer",
+                currentPage === "auth"
+                  ? "bg-[#2C2623] text-white border-[#2C2623]"
+                  : "bg-[#2C2623] text-white hover:bg-[#1A1615] border-[#2C2623]"
+              )}
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>Sign In</span>
+            </button>
+          )}
         </div>
       </div>
     </header>

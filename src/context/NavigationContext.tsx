@@ -3,6 +3,9 @@ import { PageType } from "@/components/layout/Navbar";
 
 export type RoutePath =
   | "/"
+  | "/auth"
+  | "/login"
+  | "/signup"
   | "/discover"
   | "/explore"
   | "/search"
@@ -32,6 +35,9 @@ interface NavigationContextType {
 
 export function parsePathToPage(path: string): PageType {
   const cleanPath = path.toLowerCase().split("#")[0].split("?")[0];
+  if (cleanPath.startsWith("/auth") || cleanPath.startsWith("/login") || cleanPath.startsWith("/signup")) {
+    return "auth";
+  }
   if (cleanPath.startsWith("/search")) {
     return "search";
   }
@@ -85,6 +91,7 @@ const NavigationContext = createContext<NavigationContextType>({
       search: "/search",
       article: "/articles/does-lemon-water-delay-periods",
       myth: "/myths/lemon-water-delays-periods",
+      auth: "/auth",
     };
     window.history.pushState({}, "", routeMap[page]);
     window.scrollTo({ top: 0, behavior: "smooth" });

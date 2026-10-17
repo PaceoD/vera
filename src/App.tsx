@@ -21,7 +21,9 @@ import { SearchPage } from "./pages/SearchPage";
 import { ArticlePage } from "./pages/ArticlePage";
 import { TopicPage } from "./pages/TopicPage";
 import { MythPage } from "./pages/MythPage";
+import { AuthPage } from "./pages/AuthPage";
 import { NavigationProvider, parsePathToPage } from "./context/NavigationContext";
+import { AuthProvider } from "./context/AuthContext";
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -35,6 +37,7 @@ export default function App() {
     if (hash === "#profile") return "profile";
     if (hash === "#bookmarks") return "bookmarks";
     if (hash === "#discover") return "discover";
+    if (hash === "#auth" || hash === "#login" || hash === "#signup") return "auth";
     if (hash === "#myth") return "myth";
     if (hash === "#topic") return "topic";
     if (hash === "#article" || hash === "#search" || hash === "#explore") {
@@ -54,7 +57,7 @@ export default function App() {
       const hash = window.location.hash;
       if (hash) {
         const pageFromHash = hash.replace("#", "") as PageType;
-        if (["home", "explore", "discover", "bookmarks", "profile", "trust", "topic", "search", "article", "myth"].includes(pageFromHash)) {
+        if (["home", "explore", "discover", "bookmarks", "profile", "trust", "topic", "search", "article", "myth", "auth"].includes(pageFromHash)) {
           setCurrentPage(pageFromHash);
         }
       }
@@ -103,6 +106,7 @@ export default function App() {
       search: "/search",
       article: "/articles/does-lemon-water-delay-periods",
       myth: "/myths/lemon-water-delays-periods",
+      auth: "/auth",
     };
     const path = routeMap[page];
     setCurrentPath(path);
@@ -124,50 +128,54 @@ export default function App() {
   };
 
   return (
-    <NavigationProvider value={{ currentPath, currentPage, navigate, navigateTo }}>
-      <div className="min-h-screen flex flex-col bg-transparent text-t-primary selection:bg-rose/20 relative">
-        {/* Scroll-Driven Editorial Animation Background (Active on Homepage) */}
-        {currentPage === "home" && <ScrollDrivenBackground />}
+    <AuthProvider>
+      <NavigationProvider value={{ currentPath, currentPage, navigate, navigateTo }}>
+        <div className="min-h-screen flex flex-col bg-transparent text-t-primary selection:bg-rose/20 relative">
+          {/* Scroll-Driven Editorial Animation Background (Active on Homepage) */}
+          {currentPage === "home" && <ScrollDrivenBackground />}
 
-        <Navbar currentPage={currentPage} onNavigate={navigateTo} />
+          <Navbar currentPage={currentPage} onNavigate={navigateTo} />
 
-        <main className="flex-1">
-          {currentPage === "home" && (
-            <>
-              <Hero />
-              <ExploreTopics />
-              <MythChallenge />
-              <EvidenceExplained />
-              <EvidenceFeed />
-              <LearningHub />
-              <WhyTrustVera />
-              <EditorialStandards />
-              <FAQ />
-              <JoinCommunity />
-            </>
-          )}
+          <main className="flex-1">
+            {currentPage === "home" && (
+              <>
+                <Hero />
+                <ExploreTopics />
+                <MythChallenge />
+                <EvidenceExplained />
+                <EvidenceFeed />
+                <LearningHub />
+                <WhyTrustVera />
+                <EditorialStandards />
+                <FAQ />
+                <JoinCommunity />
+              </>
+            )}
 
-          {currentPage === "discover" && <DiscoverPage />}
+            {currentPage === "discover" && <DiscoverPage />}
 
-          {currentPage === "explore" && <ExplorePage />}
+            {currentPage === "explore" && <ExplorePage />}
 
-          {currentPage === "trust" && <TrustPage />}
+            {currentPage === "trust" && <TrustPage />}
 
-          {currentPage === "bookmarks" && <ProfilePage defaultTab="bookmarks" />}
+            {currentPage === "bookmarks" && <ProfilePage defaultTab="bookmarks" />}
 
-          {currentPage === "profile" && <ProfilePage defaultTab="overview" />}
+            {currentPage === "profile" && <ProfilePage defaultTab="overview" />}
 
-          {currentPage === "topic" && <TopicPage />}
+            {currentPage === "topic" && <TopicPage />}
 
-          {currentPage === "search" && <SearchPage />}
+            {currentPage === "search" && <SearchPage />}
 
-          {currentPage === "article" && <ArticlePage />}
+            {currentPage === "article" && <ArticlePage />}
 
-          {currentPage === "myth" && <MythPage />}
-        </main>
+            {currentPage === "myth" && <MythPage />}
 
-        <Footer onNavigate={navigateTo} />
-      </div>
-    </NavigationProvider>
+            {currentPage === "auth" && <AuthPage />}
+          </main>
+
+          <Footer onNavigate={navigateTo} />
+        </div>
+      </NavigationProvider>
+    </AuthProvider>
   );
 }
