@@ -1,15 +1,16 @@
-
-<div align="center">
+ <div align="center">
 
 # Vera
 
-### Evidence-First Women's Health Platform
+### Evidence First Women's Health Platform
 
-Making women's health information clearer through scientific evidence, transparent reasoning, and thoughtful design.
+**Clearer health information. Stronger evidence. Better informed decisions.**
+
+Vera helps readers explore women's health topics, evaluate medical claims, and understand the scientific evidence behind them.
 
 [Live Demo](https://paceod.github.io/vera/) · [Report a Bug](https://github.com/PaceoD/vera/issues) · [Request a Feature](https://github.com/PaceoD/vera/issues)
 
-<br/>
+<br />
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)
@@ -22,24 +23,24 @@ Making women's health information clearer through scientific evidence, transpare
 
 ## About Vera
 
-**Vera** is an evidence-based women's health platform designed to help people evaluate health claims and understand the science behind them.
+Vera is an evidence based women's health platform designed to make complex health information easier to understand and evaluate.
 
-It presents health topics through an accessible editorial interface, with an emphasis on evidence quality, clear explanations, and informed decision-making.
+The platform presents health topics through a clean editorial interface, structured explanations, and scientific verdict pages. Its focus is on evidence quality, transparent reasoning, and accessible communication.
 
-The goal is to make reliable health information easier to explore without presenting opinions or unsupported claims as established medical facts.
+Vera aims to help readers distinguish scientifically supported information from claims that lack reliable evidence.
 
-## Features
+## Key Features
 
-- **Evidence-focused health topics:** Explore women's health subjects through structured content.
-- **Scientific verdict pages:** Present health claims with clear explanations and supporting context.
-- **Editorial reading experience:** Read health information through a clean, readable interface.
+- **Evidence focused health topics:** Explore women's health subjects through structured content.
+- **Scientific verdict pages:** Understand health claims through clear explanations and supporting context.
+- **Editorial reading experience:** Navigate information through a clean, readable interface.
 - **Topic discovery:** Find relevant subjects through search and topic navigation.
-- **Responsive interface:** Access the platform on desktop and mobile screens.
-- **Immersive storytelling:** Use scroll-based layouts to guide readers through information.
+- **Responsive design:** Access the platform across desktop and mobile devices.
+- **Immersive storytelling:** Explore content through visually structured, scroll based layouts.
 
 ## Technology Stack
 
-| Area | Technologies |
+| Area | Technology |
 |---|---|
 | Frontend | React, TypeScript |
 | Build Tool | Vite |
@@ -51,15 +52,23 @@ The goal is to make reliable health information easier to explore without presen
 
 ### Prerequisites
 
-- Node.js and npm
-- Git
+Install the following tools before running the project:
+
+- [Node.js](https://nodejs.org/)
+- npm
+- [Git](https://git-scm.com/)
 
 ### Installation
 
-Clone the repository and enter the project directory:
+Clone the repository:
 
 ```bash
 git clone https://github.com/PaceoD/vera.git
+```
+
+Navigate to the project directory:
+
+```bash
 cd vera
 ```
 
@@ -75,11 +84,17 @@ Start the development server:
 npm run dev
 ```
 
-Create a production build:
+Open the local URL displayed in your terminal.
+
+### Production Build
+
+To create an optimized production build, run:
 
 ```bash
 npm run build
 ```
+
+Vite generates the production files in the `dist` directory.
 
 ## Project Structure
 
@@ -99,33 +114,39 @@ vera/
 └── vite.config.ts
 ```
 
-*This is a simplified overview. The exact directory structure may evolve as development continues.*
+This is a simplified overview of the project structure. Additional files may be present.
 
 ## Development Roadmap
 
-- [x] Editorial user interface
-- [x] Homepage
+- [x] Homepage and editorial interface
 - [x] Health topic pages
-- [x] Verdict pages
+- [x] Scientific verdict pages
 - [x] Search interface
-- [ ] AI-assisted evidence search
+- [ ] AI assisted evidence discovery
 - [ ] User authentication
 - [ ] Bookmarks and reading history
-- [ ] Research database
-- [ ] PubMed and WHO integrations
+- [ ] Research database integration
+- [ ] PubMed and WHO resource integration
 
-*Roadmap items reflect the intended development plan and should be updated as features are completed.*
+Update these items as features are completed and tested.
 
 ## Project Vision
 
-Vera aims to make women's health information easier to understand and evaluate by helping readers distinguish well-supported evidence from misinformation.
+Vera aims to make women's health information easier to explore, understand, and evaluate. By combining accessible explanations with transparent evidence, the platform seeks to help readers ask informed questions and make better decisions about their health.
 
-The long-term goal is a platform where accessible explanations and transparent evidence help people ask better questions and make more informed decisions about their health.
+## Contributions
+
+Contributions that improve the platform's accessibility, usability, documentation, and technical reliability are welcome.
+
+If you identify a bug or have an idea for an improvement, please open an issue in the repository.
+
+- [Report a Bug](https://github.com/PaceoD/vera/issues)
+- [Request a Feature](https://github.com/PaceoD/vera/issues)
 
 ## Disclaimer
 
-Vera is an educational project and is not a substitute for professional medical advice, diagnosis, or treatment. Readers should consult qualified healthcare professionals about personal medical concerns.
+Vera is an educational project and does not replace professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional for personal medical concerns.
 
 ## License
 
-This project is distributed under the MIT License. See the `LICENSE` file for details.
+This project is intended to use the MIT License. See the `LICENSE` file for the applicable terms.
